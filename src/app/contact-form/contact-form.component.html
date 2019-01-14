@@ -1,0 +1,75 @@
+<form #userForm="ngForm" (ngSubmit)="submitForm(userForm)">
+  <!--<form #userForm="ngForm">-->
+  <!--<div class="nav navbar navbar-dark bg-primary mb-4">Bootstrap navbar</div>-->
+  <label for="Title">Vendor Solutions Title</label>
+
+  <span style="display:inline-block; width: 5px;"></span>
+  <input id="Title" ngModel name="Title" #Title="ngModel" (change)="log(Title)" type="text" placeholder="Enter Text" required
+    pattern=".{8,16}">
+  <div class="alert alert-danger" *ngIf="(Title.touched && !Title.valid) || (invalidFlagTitle && !Title.valid)">
+    <div *ngIf="Title.errors!==null">
+
+      <div *ngIf="Title.errors.required">Vendor Solutions Title is required.</div>
+      <div *ngIf="Title.errors.pattern">Title should be between 8 to 16 characters.</div>
+      <!--<div *ngIf="Title.errors.minlength">Title should be minimum 8 characters.</div>
+<div *ngIf="Title.errors.maxlength">Title should be maximum 16 characters.</div>-->
+    </div>
+  </div>
+  <!--<div *ngIf="userForm._directives[0].invalid">Vendor Solutions Title is required.</div>-->
+  <!--<div *ngIf="userForm.controls.Title.errors">Vendor Solutions Title is required</div>-->
+  <br>
+  <br>
+  <br>
+  <label for="description">Solution Description</label>
+  <span style="display:inline-block; width: 5px;"></span>
+
+  <input ngModel name="description" id="description" #description="ngModel" (change)="log(description)" type="text" placeholder="Enter Text"
+    required>
+  <div class="alert alert-danger" *ngIf="(description.touched && !description.valid) ||(invalidFlagDescription && !description.valid)">Solution Description is required.</div>
+  <br>
+  <br>
+  <br>
+  <label id="assist">Ready to assist</label>
+  <span style="display:inline-block; width: 10px;"></span>
+  <label id="deployment">Deployment Model</label>
+  <span style="display:inline-block; width: 10px;"></span>
+  <label>Weeks Notice</label>
+  <br>
+  <input type="checkbox">
+  <span style="display:inline-block; width: 100px;"></span>
+  <select>
+  <option value="option1">option1</option>
+  <option value="option2">option2</option>
+  <option value="option3">option3</option>
+  <option value="option4">option4</option>
+</select>
+  <span style="display:inline-block; width: 30px;"></span>
+  <input ngModel name="weeksNotice" #weeksNotice="ngModel" (change)="log(weeksNotice)" type="text" placeholder="Enter the number of weeks"
+    required pattern="[0-9]*">
+  <div class="alert alert-danger" *ngIf="(weeksNotice.touched && !weeksNotice.valid) || (invalidFlagWeek && !weeksNotice.valid)">
+    <div *ngIf="weeksNotice.errors!==null">
+
+      <div *ngIf="weeksNotice.errors.required">The number of weeks notice is required.</div>
+      <div *ngIf="weeksNotice.errors.pattern">Invalid input.</div>
+    </div>
+  </div>
+  <span style="display:inline-block; height: 10px;"></span>
+  <br>
+  <br>
+  <label id="addtag">Add Tag</label>
+  <br>
+  <br>
+  <select ngModel name="users" #users="ngModel" (change)="log(users)">
+  <option *ngFor="let getuser of getuser">{{getuser.first_name}}</option>
+</select>
+  <br>
+  <br>
+  <br>
+  <label for="job">Enter Job: </label>
+  <input ngModel name="job" #job="ngModel" (change)="log(job)" type="text" placeholder="Enter Job" required>
+  <div class="alert alert-danger" *ngIf="(job.touched && !job.valid) || (invalidFlagJob && !job.valid)">This field is required.</div>
+  <br>
+  <br>
+  <input type="submit" value="Submit" name="submit" id="submit">
+  <!--<button [disabled]="!userForm.form.valid" (click)="submitForm()">Submit</button>-->
+</form>

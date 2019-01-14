@@ -1,0 +1,14 @@
+<p>
+  reusable-form works!
+</p>
+
+<label for="Title">Vendor Solutions Title</label>
+<input id="Title" ngModel name="Title" #Title="ngModel" (change)="log(Title)" type="text" placeholder="Enter Text" required
+  pattern=".{8,16}">
+<div class="alert alert-danger" *ngIf="(Title.touched && !Title.valid) || (invalidFlagTitle && !Title.valid)">
+  <div *ngIf="Title.errors!==null">
+
+    <div *ngIf="Title.errors.required">Vendor Solutions Title is required.</div>
+    <div *ngIf="Title.errors.pattern">Title should be between 8 to 16 characters.</div>
+  </div>
+</div>

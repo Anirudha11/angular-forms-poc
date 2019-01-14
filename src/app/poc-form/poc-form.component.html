@@ -1,0 +1,9 @@
+
+<div *ngIf="(Title.touched && !Title.valid) || invalidFlagTitle">
+  <div *ngIf="Title.errors!==null">
+
+<div *ngIf="Title.errors.required">Vendor Solutions Title is required.</div>
+<div *ngIf="Title.errors.minlength">Title should be minimum 8 characters.</div>
+<div *ngIf="Title.errors.maxlength">Title should be maximum 16 characters.</div>
+</div>
+  </div>
